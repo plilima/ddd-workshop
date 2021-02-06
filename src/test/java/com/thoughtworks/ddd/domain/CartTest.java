@@ -1,5 +1,6 @@
 package com.thoughtworks.ddd.domain;
 
+import com.thoughtworks.ddd.domain.service.CompetitorPriceBasedPricer;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -61,5 +62,12 @@ public class CartTest {
         Product product = new Product("dummy Item", new Price(10f, Currency.getInstance("INR")));
 
         Assert.assertEquals(new Price(10f, Currency.getInstance("INR")), product.getPrice());
+    }
+
+    @Test
+    public void shouldSetTheDiscountedPriceOfTheProduct() {
+        Product product = new Product("IPad Pro", CompetitorPriceBasedPricer.priceFor("IPad Pro"));
+
+        Assert.assertEquals(new Price(90000f, Currency.getInstance("INR")), product.getPrice());
     }
 }

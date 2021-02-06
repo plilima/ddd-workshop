@@ -33,4 +33,12 @@ public class Price {
                 ", currency=" + currency +
                 '}';
     }
+
+    public float getAmount() {
+        return amount;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
 }

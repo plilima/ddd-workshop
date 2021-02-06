@@ -2,8 +2,8 @@ package application;
 
 import com.thoughtworks.ddd.domain.Cart;
 import com.thoughtworks.ddd.domain.Item;
-import com.thoughtworks.ddd.domain.Price;
 import com.thoughtworks.ddd.domain.Product;
+import com.thoughtworks.ddd.domain.service.CompetitorPriceBasedPricer;
 
 import java.util.Currency;
 
@@ -11,9 +11,10 @@ public class ShoppingCartApplication {
 
     public static void main(String[] args) {
         Cart cart = new Cart();
-        Product ipadPro = new Product("IPad Pro", new Price(100000f, Currency.getInstance("INR")));
-        Product heroInkPen = new Product("Hero Ink Pen", new Price(10f, Currency.getInstance("INR")));
-        Product gmCricketBat = new Product("GM Cricket Bat", new Price(1000f, Currency.getInstance("INR")));
+        Currency inr = Currency.getInstance("INR");
+        Product ipadPro = new Product("IPad Pro", CompetitorPriceBasedPricer.priceFor("IPad Pro"));
+        Product heroInkPen = new Product("Hero Ink Pen", CompetitorPriceBasedPricer.priceFor("Hero Ink Pen"));
+        Product gmCricketBat = new Product("GM Cricket Bat", CompetitorPriceBasedPricer.priceFor("GM Cricket Bat"));
 
         Item iPadProItem = new Item(ipadPro);
         Item heroInkPenItem = new Item(heroInkPen);
@@ -29,5 +30,8 @@ public class ShoppingCartApplication {
 
         System.out.println(cart.getItems());
         System.out.println(cart.getDeletedItems());
+
+        System.out.println(ipadPro.getPrice());
     }
+
 }
