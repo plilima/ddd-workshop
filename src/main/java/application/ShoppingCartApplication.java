@@ -5,13 +5,10 @@ import com.thoughtworks.ddd.domain.Item;
 import com.thoughtworks.ddd.domain.Product;
 import com.thoughtworks.ddd.domain.service.CompetitorPriceBasedPricer;
 
-import java.util.Currency;
-
 public class ShoppingCartApplication {
 
     public static void main(String[] args) {
         Cart cart = new Cart();
-        Currency inr = Currency.getInstance("INR");
         Product ipadPro = new Product("IPad Pro", CompetitorPriceBasedPricer.priceFor("IPad Pro"));
         Product heroInkPen = new Product("Hero Ink Pen", CompetitorPriceBasedPricer.priceFor("Hero Ink Pen"));
         Product gmCricketBat = new Product("GM Cricket Bat", CompetitorPriceBasedPricer.priceFor("GM Cricket Bat"));
