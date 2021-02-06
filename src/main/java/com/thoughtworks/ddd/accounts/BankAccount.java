@@ -8,4 +8,8 @@ public class BankAccount {
         this.accountNumber = accountNumber;
         this.customerAddress = customerAddress;
     }
+
+    public void updateAddress(CustomerAddress updatedAddress) {
+        this.customerAddress = updatedAddress;
+    }
 }

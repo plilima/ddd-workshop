@@ -12,7 +12,7 @@ public class CustomerTest {
         CustomerAddress customerAddress = new CustomerAddress("Pune");
         BankAccount bankAccount1 = new BankAccount(12345L, customerAddress);
         BankAccount bankAccount2 = new BankAccount(12346L, customerAddress);
-        Customer customer = new Customer(new ArrayList<BankAccount>() {{
+        Customer customer = new Customer(new ArrayList<>() {{
             add(bankAccount1);
             add(bankAccount2);
         }});
