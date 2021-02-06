@@ -70,4 +70,33 @@ public class CartTest {
 
         Assert.assertEquals(new Price(90000f, Currency.getInstance("INR")), product.getPrice());
     }
+
+    @Test
+    public void shouldMarkTheCartAsCheckedOut() {
+        Cart cart = new Cart();
+        Product product = new Product("IPad Pro", CompetitorPriceBasedPricer.priceFor("IPad Pro"));
+        Item item = new Item(product );
+
+        Address address = new Address("Pune");
+
+        cart.add(item);
+        cart.checkOut(address);
+
+        Assert.assertTrue(cart.isCheckedOut());
+    }
+
+    @Test
+    public void shouldCreateOrderWhenCartIsCheckedOut() {
+        Cart cart = new Cart();
+        Product product = new Product("IPad Pro", CompetitorPriceBasedPricer.priceFor("IPad Pro"));
+        Item item = new Item(product );
+
+        Address address = new Address("Pune");
+
+        cart.add(item);
+        Order order = cart.checkOut(address);
+
+        Assert.assertEquals(address,order.getAddress());
+        Assert.assertEquals(product,order.getProducts().get(0));
+    }
 }
